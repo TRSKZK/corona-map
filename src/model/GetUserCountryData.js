@@ -7,12 +7,12 @@ const getUserCoords = async () => {
     })
   }
   
-  const getUserCountryData = async () => {
+  export const getUserCountryData = async () => {
     try {
      
       const location = await getUserCoords();
       const { latitude, longitude } = location.coords 
-      console.log(latitude, longitude);
+      // console.log(latitude, longitude);
   
       const response = await fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
       const {country }= await response.json()
@@ -21,9 +21,19 @@ const getUserCoords = async () => {
   
       const responseUserCountry= await fetch(`https://disease.sh/v3/covid-19/countries/${country}`)
       const dataUserDeseas = await responseUserCountry.json()
-      console.log(dataUserDeseas);
+      // console.log(dataUserDeseas);
+
+      const counriesInfo = await fetch("https://disease.sh/v3/covid-19/countries")
+      const data = await counriesInfo.json()
+      // console.log(data);
+
+      // const formatedData = data.map(item => item.country
+        
+      // )
+
+      // console.log(formatedData);
     
-       
+       return data
     
     } catch (e) {
       console.error(`${e.message}`)

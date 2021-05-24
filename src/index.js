@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Map from '../src/components/MapComponent'
 import SearchForm from './components/SearchForm'
+import { getUserCountryData } from './model/GetUserCountryData'
 
 
 
