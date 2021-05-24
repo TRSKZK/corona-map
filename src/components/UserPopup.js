@@ -2,6 +2,7 @@ import React from 'react'
 import { Popup } from 'react-leaflet'
 import styled from 'styled-components'
 
+
 const StyledPopup = styled(Popup)`
 width: 200px;
 .leaflet-popup-content-wrapper {
@@ -21,24 +22,29 @@ width: 200px;
 const PopupImg = styled.img`
 width:30px;
 height30px;
+margin-right:5px;
 
 `
 const StylepP = styled.p`
 color: #ffff;
 `
 
-const UserPopup = ({ imgs }) => {
-  console.log(imgs);
+const UserPopup = (props) => {
     return (
-        <StyledPopup>
-            <div>
+      <StyledPopup>
+        <div>
+          <StylepP>
               <PopupImg
-                src='https://cdn3.iconfinder.com/data/icons/basicolor-arrows-checks/24/149_check_ok-512.png'></PopupImg>
-              <StylepP>Cases:</StylepP>
-              <StylepP>Cases:</StylepP>
-              <StylepP>Cases:</StylepP>
-           </div>
-    </StyledPopup>
+              src={props.data.flags}>
+              
+              </PopupImg>
+          
+            { props.data.country}</StylepP>
+                  <StylepP>Today cases:{props.data.todayCases}</StylepP>
+                  <StylepP>Today death:{props.data.todayDeath}</StylepP>
+                  <StylepP>Last update: {(props.data.lastUpdate)} </StylepP>
+            </div>
+      </StyledPopup>
     )
 }
 
