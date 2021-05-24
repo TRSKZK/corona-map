@@ -27,9 +27,10 @@ const StylepP = styled.p`
 color: #ffff;
 `
 
-const UserPopup = () => {
+const UserPopup = ({ imgs }) => {
+  console.log(imgs);
     return (
-        <StyledPopup className="request-popup">
+        <StyledPopup>
             <div>
               <PopupImg
                 src='https://cdn3.iconfinder.com/data/icons/basicolor-arrows-checks/24/149_check_ok-512.png'></PopupImg>
