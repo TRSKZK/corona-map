@@ -2,19 +2,25 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Map from '../src/components/MapComponent'
+import SearchForm from './components/SearchForm'
+import { getUserCountryData } from './model/GetUserCountryData'
 
 
-const StyledH = styled.h1`
-color: red;
+
+
+const Container = styled.main`
+display:flex;
+flex-direction: column;
+align-items:center;
+justify-content: center;
 `
-
 
 const App = () => {
     return (
-        <> 
-            <StyledH>HEllo bloody world</StyledH>
+        <Container> 
+            <SearchForm/>
             <Map/>
-        </>
+        </Container>
         
     )
 }
