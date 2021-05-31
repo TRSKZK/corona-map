@@ -29,10 +29,35 @@ margin: 30px 0 0 0;
 padding: 0 0 30px 0;
 `
 
+
+
+
+
+
 const SearchForm = () => {
     const [country, setCountry] = useState(``);
+
+    const getSpecificCountryData = async () => {
+        try {
+            const response = await fetch(`https://disease.sh/v3/covid-19/countries/${country}?strict=true`)
+            const data = await response.json()
+            console.log(data);
+    
+        } catch (e) {
+            console.error(`${e.message}💥💥💥`);
+        }
+    }
+
+
+
+
+
+
     return (
-        <Form >
+        <Form onSubmit={(e) => {
+            e.preventDefault(),
+                getSpecificCountryData()
+        }}>
             <SearchInput type='text'
                 placeholder='Enter country name'
                 value={country}

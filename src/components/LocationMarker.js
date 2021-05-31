@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Marker} from 'react-leaflet';
-import { getUserCountryData } from '../model/GetUserCountryData';
+import { getCountrysData } from '../model/GetUserCountryData';
 import UserPopup from './UserPopup';
 
 
@@ -10,10 +10,9 @@ import UserPopup from './UserPopup';
 const LocationMarker = () => {
   const [location, setLocation]=useState([])
   useEffect(async () => {
-    const data = await getUserCountryData()
+    const data = await getCountrysData()
     setLocation(data)
   }, [])
-  console.log(location);
   
   
   return (
@@ -34,7 +33,6 @@ const LocationMarker = () => {
           )
         })
       }
-
     </>
      
   )
