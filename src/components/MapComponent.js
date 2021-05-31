@@ -17,16 +17,6 @@ const getUserCoords = () => {
 
 
 const Map = () => {
-
-  // const [location, setLocation] = useState({})
-  // useEffect(async () => {
-  //   const response = await getUserCoords()
-  //   console.log(response, 'my data');
-  //    setLocation(response.coords)
-  // }, [])
-  // console.log(location.latitude);
- 
-
   return (
       
     <StyledContainer   center={[51.505, 30.09]}
