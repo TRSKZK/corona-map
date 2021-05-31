@@ -44,7 +44,6 @@ const SearchForm = () => {
             console.error(`${e.message}💥💥💥`);
         }
     }
-console.log(fetchedData);
 
 
     

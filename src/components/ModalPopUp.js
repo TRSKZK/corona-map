@@ -20,7 +20,7 @@ display: ${props=> props.show ? "block": 'none'}
 const Flag = styled.div`
 width:150px;
 height:100px;
-// background: url(${data => console.log(data)});
+background: url(${props => props.url ? props.url.flag : null});
 background-size: cover;
 `
 const ListInfo = styled.ul`
