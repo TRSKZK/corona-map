@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Map from '../src/components/MapComponent'
 import SearchForm from './components/SearchForm'
-import { getUserCountryData } from './model/GetUserCountryData'
+
+
 
 
 
@@ -16,10 +17,12 @@ justify-content: center;
 `
 
 const App = () => {
+
+    const flag = "https://disease.sh/assets/img/flags/be.png"
     return (
         <Container> 
             <SearchForm/>
-            <Map/>
+            <Map />
         </Container>
         
     )
