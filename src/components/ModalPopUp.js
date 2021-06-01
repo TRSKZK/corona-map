@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -26,12 +26,18 @@ background-size: cover;
 const ListInfo = styled.ul`
 list-style: none;
 `
+const CloseBtn = styled.button`
+width:30px;
+height: 30px;
+margin: 0 0 0 600px;
 
+`
 const ModalPopUp = ({data, display}) => {
-    
-    // console.log(data !== undefined ? data.countryInfo.flag  : null);
+const [display1 = display, setDisplay] = useState(false)
+
     return (
         < ModalWrapp show={display}>
+            <CloseBtn onClick={()=> setDisplay(false)}><FontAwesomeIcon icon={faTimes}/></CloseBtn>
             <Flag url={data.countryInfo}></Flag>
             <ListInfo >
                 <li>Total cases: {data.cases }</li>
