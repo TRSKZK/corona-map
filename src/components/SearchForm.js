@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ModalPopUp from './ModalPopUp'
+import {fromEvent} from 'rxjs'
+import { debounceTime, distinctUntilChanged, pluck } from 'rxjs/operators';
 
 const SearchInput = styled.input`
 width:300px;
@@ -35,6 +37,17 @@ const SearchForm = () => {
     const [fetchedData, setFetchedData] = useState({})
     let [modalDisplay, setModalDisplay] = useState(false)
 
+
+    useEffect(() => {
+        const country$ = fromEvent(document.getElementById('input'), 'keyup')
+       const sub =  country$.pipe(
+            debounceTime(300),
+            pluck('target','value'),
+            distinctUntilChanged()
+        ).subscribe(setCountry)
+        
+    },[])
+
     const getSpecificCountryData = async () => {
         try {
             const response = await fetch(`https://disease.sh/v3/covid-19/countries/${country}?strict=true`)
@@ -53,8 +66,7 @@ const SearchForm = () => {
         }}>
             <SearchInput type='text'
                 placeholder='Enter country name'
-                value={country}
-                onChange={ (e)=>setCountry(e.target.value)}/>
+                id='input'/>
             
             <SubmitButton type="submit"><FontAwesomeIcon icon={faSearch} /></SubmitButton>
             <ModalPopUp display={modalDisplay} data={fetchedData}></ModalPopUp>
