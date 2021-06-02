@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ModalPopUp from './ModalPopUp'
+
 import { fromEvent } from 'rxjs';
 import { pluck, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+
 
 
 const SearchInput = styled.input`
@@ -46,7 +49,9 @@ const SearchForm = () => {
             pluck('target','value'),
             distinctUntilChanged()
         ).subscribe(setCountry)
+
         return ()=> sub.unsubscribe()
+
     },[])
 
     const getSpecificCountryData = async () => {
@@ -67,7 +72,9 @@ const SearchForm = () => {
         }}>
             <SearchInput type='text'
                 placeholder='Enter country name'
+
                 id="input"/>
+
             
             <SubmitButton type="submit"><FontAwesomeIcon icon={faSearch} /></SubmitButton>
             <ModalPopUp display={modalDisplay} data={fetchedData}></ModalPopUp>
