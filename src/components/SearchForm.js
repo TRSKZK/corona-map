@@ -45,10 +45,6 @@ const SearchForm = () => {
         }
     }
 
-
-    
-
-
     return (
         <Form onSubmit={(e) => {
             e.preventDefault();
