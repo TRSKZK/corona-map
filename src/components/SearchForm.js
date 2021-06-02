@@ -72,9 +72,7 @@ const SearchForm = () => {
         }}>
             <SearchInput type='text'
                 placeholder='Enter country name'
-
-                id="input"/>
-
+                id="input" />
             
             <SubmitButton type="submit"><FontAwesomeIcon icon={faSearch} /></SubmitButton>
             <ModalPopUp display={modalDisplay} data={fetchedData}></ModalPopUp>
